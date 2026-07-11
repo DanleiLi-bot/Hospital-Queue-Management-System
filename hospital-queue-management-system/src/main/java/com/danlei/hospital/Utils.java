@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.danlei.hospital.Main.Specialization;
+
 public class Utils {
     public static Scanner scanner = new Scanner(System.in);
 
@@ -33,5 +35,27 @@ public class Utils {
     }
 
     return result;
+  }
+
+  public Doctor parseDoctor(List<String> doctorData) {
+    for (String line : doctorData) {
+        String[] parts = line.trim().split(",");
+        String name = parts[0].trim();
+        String specializationStr = parts[1].trim();
+        String roomNumber = parts[2].trim();
+
+        Specialization thisSpec = null;
+        for (Specialization spec : Specialization.values()) {
+            if (spec.getName().equals(specializationStr)) {
+                thisSpec = spec;
+                break;
+            }
+        }
+
+        if (thisSpec != null && !roomNumber.isEmpty()) {
+            return new Doctor(name, thisSpec, roomNumber);
+        }
+    }
+    return null;
   }
 }

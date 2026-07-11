@@ -4,11 +4,31 @@ import java.util.Scanner;
 
 public class Main {
     public enum Gender {
-        MALE, FEMALE, OTHER;
+        MALE("MALE"), FEMALE("FEMALE"), OTHER("OTHER");
+        
+        private final String name;
+
+        Gender(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
     public enum Specialization {
-        CARDIOLOGY, DERMATOLOGY, NEUROLOGY, PEDIATRICS, ORTHOPEDICS;
+        CARDIOLOGY("Cardiology"), DERMATOLOGY("Dermatology"), NEUROLOGY("Neurology"), PEDIATRICS("Pediatrics"), ORTHOPEDICS("Orthopedics");
+        
+        private final String name;
+
+        Specialization(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
     public static void main(String[] args) {
