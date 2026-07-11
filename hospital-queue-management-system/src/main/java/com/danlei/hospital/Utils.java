@@ -37,8 +37,7 @@ public class Utils {
     return result;
   }
 
-  public Doctor parseDoctor(List<String> doctorData) {
-    for (String line : doctorData) {
+  public Doctor parseDoctor(String line) {
         String[] parts = line.trim().split(",");
         String name = parts[0].trim();
         String specializationStr = parts[1].trim();
@@ -46,7 +45,7 @@ public class Utils {
 
         Specialization thisSpec = null;
         for (Specialization spec : Specialization.values()) {
-            if (spec.getName().equals(specializationStr)) {
+            if (spec.getName().equalsIgnoreCase(specializationStr)) {
                 thisSpec = spec;
                 break;
             }
@@ -55,7 +54,6 @@ public class Utils {
         if (thisSpec != null && !roomNumber.isEmpty()) {
             return new Doctor(name, thisSpec, roomNumber);
         }
+        return null;
     }
-    return null;
-  }
 }
