@@ -1,12 +1,14 @@
 package com.danlei.hospital;
 
+import com.danlei.hospital.Main.Specialization;
+
 public class Doctor {
     private String name;
-    private String specialization;
+    private Specialization specialization;
     private String availability;
     private String roomNumber;
 
-    public Doctor(String name, String specialization, String availability, String roomNumber) {
+    public Doctor(String name, Specialization specialization, String availability, String roomNumber) {
         this.name = name;
         this.specialization = specialization;
         this.availability = availability;
@@ -17,7 +19,7 @@ public class Doctor {
         return name;
     }
 
-    public String getSpecialization() {
+    public Specialization getSpecialization() {
         return specialization;
     }
 
