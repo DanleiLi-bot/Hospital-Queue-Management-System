@@ -5,13 +5,12 @@ import com.danlei.hospital.Main.Specialization;
 public class Doctor {
     private String name;
     private Specialization specialization;
-    private String availability;
+    private String availability = "yes";
     private String roomNumber;
 
-    public Doctor(String name, Specialization specialization, String availability, String roomNumber) {
+    public Doctor(String name, Specialization specialization, String roomNumber) {
         this.name = name;
         this.specialization = specialization;
-        this.availability = availability;
         this.roomNumber = roomNumber;
     }
 
