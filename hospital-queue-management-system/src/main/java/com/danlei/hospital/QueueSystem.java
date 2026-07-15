@@ -35,7 +35,8 @@ public class QueueSystem {
         }
     }
 
-    public void showQueue(String patientName) {
+    public void showQueue() {
+        String patientName = Utils.scanner.nextLine().trim();
         if (patientName == null || patientName.isEmpty()) {
             System.out.println("Invalid patient name.");
             return;
@@ -55,13 +56,42 @@ public class QueueSystem {
         }
         if (foundPatient != null) {
             number = number - 1; // Adjusting for zero-based index
-            System.out.println("Patient found in queue at position " + number);
+            System.out.println("There are " + number + " patients ahead of " + patientName);
         } else {
             System.out.println("Patient not found in queue.");
         }
     }
 
-    public void searchPatient(String patientName) {
+    public void searchPatient() {
+        String patientName = Utils.scanner.nextLine().trim();
+        if (patientName == null || patientName.isEmpty()) {
+            System.out.println("Invalid patient name.");
+            return;
+        } else if (patientQueue.isEmpty()) {
+            System.out.println("The queue is currently empty.");
+            return;
+        }
+
+        boolean found = false;
+        Patient foundPatient = null;
+        for (Patient patient : patientQueue) {
+            if (patient.getName().equalsIgnoreCase(patientName)) {
+                found = true;
+                foundPatient = patient;
+                break;
+            }
+        }
+        if (found) {
+            System.out.println("Patient " + patientName + " is in the queue.");
+            StringBuilder sb = new StringBuilder();
+            sb.append(foundPatient.getName())
+             .append(" (Age: ")
+             .append(foundPatient.getAge())
+             .append(")");
+            System.out.println(sb.toString());
+        } else {
+            System.out.println("Patient " + patientName + " is not in the queue.");
+        }
 
     }
 

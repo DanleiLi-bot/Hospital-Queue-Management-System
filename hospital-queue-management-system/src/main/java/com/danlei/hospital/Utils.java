@@ -75,16 +75,42 @@ public class Utils {
 
         System.out.print("Enter patient gender (MALE/FEMALE/OTHER): ");
         String genderStr = scanner.nextLine().trim().toUpperCase();
+        Gender thisGender = null;
         try {
           for (Gender gender : Gender.values()) {
             if (gender.getName().equals(genderStr)) {
-              return new Patient(name, age, gender);
+              thisGender = gender;
+              break;
             }
           }
-          throw new InvalidGenderException(genderStr);
+          if (thisGender == null) {
+            throw new InvalidGenderException(genderStr);
+          }
         } catch (InvalidGenderException e) {
           System.out.println(e.getMessage());
         }
+
+        System.out.println("Select which symptom the patient has(CARDIOLOGY/DERMATOLOGY/NEUROLOGY/PEDIATRICS/ORTHOPEDICS):");
+        String symptomStr = scanner.nextLine().trim().toUpperCase();
+        Specialization thisSymptom = null;
+        
+        try {
+          for (Specialization symptom : Specialization.values()) {
+            if (symptom.getName().equals(symptomStr)) {
+              thisSymptom = symptom;
+              Patient patient = new Patient(name, age, thisGender, thisSymptom);
+              return patient;
+            }
+          }
+          if (thisSymptom == null) {
+            throw new InvalidSymptomException(symptomStr);
+          }
+        } catch (InvalidSymptomException e) {
+          System.out.println(e.getMessage());
+        }
+
+        return null; // This line will never be reached, but is required to satisfy the method's return type.
+        
       }
 
     }
