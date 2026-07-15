@@ -26,8 +26,13 @@ public class QueueSystem {
     }
 
     public void addPatient() {
-        String input = Utils.scanner.nextLine();
-        String[] parts = input.split(" ");
+        Patient patient = Utils.promptForPatient();
+        if (patient != null) {
+            patientQueue.add(patient);
+            System.out.println("Patient added to the queue: " + patient.getName());
+        } else {
+            System.out.println("Failed to add patient.");
+        }
     }
 
     public void showQueue(String patientName) {

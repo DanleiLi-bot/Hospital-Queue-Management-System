@@ -58,7 +58,7 @@ public class Utils {
         return null;
     }
 
-    public Patient promptForPatient() {
+    public static Patient promptForPatient() {
 
       while (true) {
         System.out.print("Enter patient name: ");
