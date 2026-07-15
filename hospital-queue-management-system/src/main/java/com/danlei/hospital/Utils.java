@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.danlei.hospital.Main.Specialization;
+import com.danlei.hospital.Main.Gender;
 
 public class Utils {
     public static Scanner scanner = new Scanner(System.in);
@@ -72,8 +73,18 @@ public class Utils {
             continue;
         }
 
-        System.out.print("Enter patient gender (MALE/FEMALE): ");
+        System.out.print("Enter patient gender (MALE/FEMALE/OTHER): ");
         String genderStr = scanner.nextLine().trim().toUpperCase();
+        try {
+          for (Gender gender : Gender.values()) {
+            if (gender.getName().equals(genderStr)) {
+              return new Patient(name, age, gender);
+            }
+          }
+          throw new InvalidGenderException(genderStr);
+        } catch (InvalidGenderException e) {
+          System.out.println(e.getMessage());
+        }
       }
 
     }
