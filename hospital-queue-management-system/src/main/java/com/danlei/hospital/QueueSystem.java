@@ -1,11 +1,14 @@
 package com.danlei.hospital;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 import com.danlei.hospital.Main.Gender;
 
 public class QueueSystem {
     List<Doctor> doctors = new ArrayList<>();
+    Queue<Patient> patientQueue = new ArrayDeque<>();
 
     public QueueSystem() {
         loadDoctors();

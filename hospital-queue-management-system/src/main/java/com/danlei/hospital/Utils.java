@@ -56,4 +56,25 @@ public class Utils {
         }
         return null;
     }
+
+    public Patient promptForPatient() {
+
+      while (true) {
+        System.out.print("Enter patient name: ");
+        String name = scanner.nextLine().trim();
+
+        System.out.print("Enter patient age: ");
+        int age;
+        try {
+            age = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid age. Please enter a valid number.");
+            continue;
+        }
+
+        System.out.print("Enter patient gender (MALE/FEMALE): ");
+        String genderStr = scanner.nextLine().trim().toUpperCase();
+      }
+
+    }
 }
