@@ -36,7 +36,29 @@ public class QueueSystem {
     }
 
     public void showQueue(String patientName) {
+        if (patientName == null || patientName.isEmpty()) {
+            System.out.println("Invalid patient name.");
+            return;
+        } else if (patientQueue.isEmpty()) {
+            System.out.println("The queue is currently empty.");
+            return;
+        }
 
+        Patient foundPatient = null;
+        int number = 0;
+        for (Patient patient : patientQueue) {
+            number++;
+            if (patient.getName().equalsIgnoreCase(patientName)) {
+                foundPatient = patient;
+                break;
+            }
+        }
+        if (foundPatient != null) {
+            number = number - 1; // Adjusting for zero-based index
+            System.out.println("Patient found in queue at position " + number);
+        } else {
+            System.out.println("Patient not found in queue.");
+        }
     }
 
     public void searchPatient(String patientName) {
