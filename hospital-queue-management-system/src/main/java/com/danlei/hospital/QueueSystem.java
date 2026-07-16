@@ -29,9 +29,17 @@ public class QueueSystem {
         Patient patient = Utils.promptForPatient();
         if (patient != null) {
             patientQueue.add(patient);
+            for (Doctor doctor : doctors) {
+                if (doctor.getSpecialization() == patient.getSymptom() && doctor.getAvailability().equalsIgnoreCase("yes")) {
+                    patient.setAssignedDoctor(doctor);
+                    doctor.setAvailability("no");
+                    break;
+                }
+            }
             System.out.println("Patient added to the queue: " + patient.getName());
         } else {
             System.out.println("Failed to add patient.");
+            return;
         }
     }
 

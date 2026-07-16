@@ -8,6 +8,7 @@ public class Patient {
     private int age;
     private Gender gender;
     private Specialization symptom;
+    private Doctor assignedDoctor = null;
 
     public Patient(String name, int age, Gender gender, Specialization symptom) {
         this.name = name;
@@ -30,5 +31,13 @@ public class Patient {
 
     public Specialization getSymptom() {
         return symptom;
+    }
+
+    public Doctor getAssignedDoctor() {
+        return assignedDoctor;
+    }
+
+    public void setAssignedDoctor(Doctor doctor) {
+        this.assignedDoctor = doctor;
     }
 }

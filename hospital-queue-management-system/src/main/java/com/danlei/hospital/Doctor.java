@@ -29,4 +29,8 @@ public class Doctor {
     public String getRoomNumber() {
         return roomNumber;
     }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
 }
