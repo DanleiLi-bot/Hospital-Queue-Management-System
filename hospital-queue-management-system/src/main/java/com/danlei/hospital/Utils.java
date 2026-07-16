@@ -97,7 +97,7 @@ public class Utils {
 
       try {
         for (Specialization symptom : Specialization.values()) {
-          if (symptom.getDescription().equals(symptomStr)) {
+          if (symptom.getDescription().equalsIgnoreCase(symptomStr)) {
             thisSymptom = symptom;
             Patient patient = new Patient(name, age, thisGender, thisSymptom);
             return patient;

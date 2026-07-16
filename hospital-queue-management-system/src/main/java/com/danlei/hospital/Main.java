@@ -46,7 +46,6 @@ public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     String command = (scanner.nextLine()).trim().toLowerCase();
-    scanner.close();
 
     QueueSystem queueSystem = new QueueSystem();
     if (command.equalsIgnoreCase("add patient")) {
@@ -60,5 +59,7 @@ public class Main {
     } else {
       System.out.println("Invalid command. Please enter a valid command.");
     }
+
+    scanner.close();
   }
 }
