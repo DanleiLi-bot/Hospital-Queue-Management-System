@@ -18,16 +18,22 @@ public class Main {
     }
 
     public enum Specialization {
-        CARDIOLOGY("Cardiology"), DERMATOLOGY("Dermatology"), NEUROLOGY("Neurology"), PEDIATRICS("Pediatrics"), ORTHOPEDICS("Orthopedics");
+        CARDIOLOGY("Cardiology", "Heart diseases"), DERMATOLOGY("Dermatology", "Skin conditions"), NEUROLOGY("Neurology", "Nervous system disorders"), PEDIATRICS("Pediatrics", "Children's health"), ORTHOPEDICS("Orthopedics", "Musculoskeletal system");
         
         private final String name;
+        private final String description;
 
-        Specialization(String name) {
+        Specialization(String name, String description) {
             this.name = name;
+            this.description = description;
         }
 
         public String getName() {
             return name;
+        }
+
+        public String getDescription() {
+            return description;
         }
     }
 
