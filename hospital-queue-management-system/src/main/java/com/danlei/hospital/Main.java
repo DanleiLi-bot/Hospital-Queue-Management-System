@@ -3,43 +3,62 @@ package com.danlei.hospital;
 import java.util.Scanner;
 
 public class Main {
-    public enum Gender {
-        MALE("MALE"), FEMALE("FEMALE"), OTHER("OTHER");
-        
-        private final String name;
+  public enum Gender {
+    MALE("MALE"),
+    FEMALE("FEMALE"),
+    OTHER("OTHER");
 
-        Gender(String name) {
-            this.name = name;
-        }
+    private final String name;
 
-        public String getName() {
-            return name;
-        }
+    Gender(String name) {
+      this.name = name;
     }
 
-    public enum Specialization {
-        CARDIOLOGY("Cardiology", "Heart diseases"), DERMATOLOGY("Dermatology", "Skin conditions"), NEUROLOGY("Neurology", "Nervous system disorders"), PEDIATRICS("Pediatrics", "Children's health"), ORTHOPEDICS("Orthopedics", "Musculoskeletal system");
-        
-        private final String name;
-        private final String description;
+    public String getName() {
+      return name;
+    }
+  }
 
-        Specialization(String name, String description) {
-            this.name = name;
-            this.description = description;
-        }
+  public enum Specialization {
+    CARDIOLOGY("Cardiology", "Heart diseases"),
+    DERMATOLOGY("Dermatology", "Skin conditions"),
+    NEUROLOGY("Neurology", "Nervous system disorders"),
+    PEDIATRICS("Pediatrics", "Children's health"),
+    ORTHOPEDICS("Orthopedics", "Musculoskeletal system");
 
-        public String getName() {
-            return name;
-        }
+    private final String name;
+    private final String description;
 
-        public String getDescription() {
-            return description;
-        }
+    Specialization(String name, String description) {
+      this.name = name;
+      this.description = description;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String command = (scanner.nextLine()).trim().toLowerCase();
-        scanner.close();    
+    public String getName() {
+      return name;
     }
+
+    public String getDescription() {
+      return description;
+    }
+  }
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    String command = (scanner.nextLine()).trim().toLowerCase();
+    scanner.close();
+
+    QueueSystem queueSystem = new QueueSystem();
+    if (command.equalsIgnoreCase("add patient")) {
+      queueSystem.addPatient();
+    } else if (command.equalsIgnoreCase("show queue")) {
+      queueSystem.showQueue();
+    } else if (command.equalsIgnoreCase("search patient")) {
+      queueSystem.searchPatient();
+    } else if (command.equalsIgnoreCase("call patient")) {
+      queueSystem.callNextPatient();
+    } else {
+      System.out.println("Invalid command. Please enter a valid command.");
+    }
+  }
 }

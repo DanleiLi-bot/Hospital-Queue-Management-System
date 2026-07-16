@@ -5,7 +5,7 @@ import com.danlei.hospital.Main.Specialization;
 public class Doctor {
     private String name;
     private Specialization specialization;
-    private String availability = "yes";
+    private boolean isAvailable = true;
     private String roomNumber;
 
     public Doctor(String name, Specialization specialization, String roomNumber) {
@@ -22,15 +22,15 @@ public class Doctor {
         return specialization;
     }
 
-    public String getAvailability() {
-        return availability;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
     public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setAvailability(String availability) {
-        this.availability = availability;
+    public void setAvailability(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 }

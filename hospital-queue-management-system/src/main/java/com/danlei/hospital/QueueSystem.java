@@ -30,9 +30,9 @@ public class QueueSystem {
         if (patient != null) {
             patientQueue.add(patient);
             for (Doctor doctor : doctors) {
-                if (doctor.getSpecialization() == patient.getSymptom() && doctor.getAvailability().equalsIgnoreCase("yes")) {
+                if (doctor.getSpecialization() == patient.getSymptom() && doctor.isAvailable()) {
                     patient.setAssignedDoctor(doctor);
-                    doctor.setAvailability("no");
+                    doctor.setAvailability(false);
                     break;
                 }
             }
@@ -104,7 +104,18 @@ public class QueueSystem {
     }
 
     public void callNextPatient() {
-
+        Patient nextPatient = patientQueue.poll();
+        if (nextPatient != null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Calling patient: ")
+              .append(nextPatient.getName())
+              .append("To room: ")
+              .append(nextPatient.getAssignedDoctor().getRoomNumber());
+            System.out.println(sb.toString());
+            nextPatient.getAssignedDoctor().setAvailability(true);
+        } else {
+            System.out.println("No patients in the queue.");
+        }
     }
 
 }
